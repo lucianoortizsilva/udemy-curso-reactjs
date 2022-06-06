@@ -1,11 +1,23 @@
-/** 
- * 'export' para ser utilizado em outros arquivos
- */
-export default function App(){
+import React from "react"
+
+const BemVindo = (props)=> {
   return(
     <div>
-      <h1>Bem vindo ao sistema</h1>
-      <h2>lucianoortizsilva@gmail.com</h2>
+      <h2>Bem-Vindo(a) {props.nome}</h2>
+      <h3>Tenho {props.idade} anos </h3>
     </div>
-  )
+  );
 }
+
+function App(){
+  return(
+    <div>
+      Olá Mundo!
+      <BemVindo nome="Luciano" idade="38"/>
+      <BemVindo nome="Ortiz" idade="63"/>
+      <h1>Curso React</h1>
+    </div>
+  );
+}
+
+export default App;
