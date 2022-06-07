@@ -2,40 +2,31 @@ import React, {Component} from 'react'
 
 class App extends Component{
 
+  //ciclo de vida: 1º chamado
   constructor(props){
     super(props);
     this.state = {
-      nome: 'Luciano',
-      contador: 0
+      hora: '00:00:00'
     }
-    this.aumentar = this.aumentar.bind(this);
-    this.diminuir = this.diminuir.bind(this);
+  }
+  
+  //Depois q monta componente, uma unica vez:
+  componentDidMount(){    
+    setInterval(() => {
+      let state = this.state;
+      state.hora= new Date().toLocaleTimeString()
+      this.setState(state)
+    }, 1000);
   }
 
-  aumentar(){
-    let state = this.state;
-    state.contador += 1;
-    this.setState(state)
-  }
-
-  diminuir(){
-    let state = this.state;
-    if(state.contador > 0){
-      state.contador -= 1;
-    }    
-    this.setState(state)
+  componentDidUpdate(){
+    console.log('Atualizou!!!')
   }
 
   render(){
     return(
       <div>
-        <h1>{this.state.nome}</h1>
-        <h3>
-          <button onClick={this.diminuir}>-</button>
-            {this.state.contador}
-          <button onClick={this.aumentar}>+</button>
-        </h3>
-        
+        <h1>Meu Projeto {this.state.hora}</h1>
       </div>
     );
   }
