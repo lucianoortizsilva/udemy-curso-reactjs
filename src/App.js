@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 
 function App() {
@@ -6,9 +6,7 @@ function App() {
   const [tarefas, setTarefas] = useState([]);
   const [input, setInput] = useState('');
 
-  /**
-  *  Chamado após montar a tela
-  */
+
   useEffect(()=>{
     const tarefasStorage = localStorage.getItem('tarefas');
 
@@ -29,6 +27,8 @@ function App() {
     setInput('');
   }
 
+  const totalTarefas = useMemo(()=> tarefas.length, [tarefas]);
+
   return (
     <div>
 
@@ -37,7 +37,8 @@ function App() {
           <li key={tarefa}>{tarefa}</li>
         ))}
       </ul>
-
+      <br/>    
+      <strong>Você tem {totalTarefas} tarefas!</strong><br/>
       <input type="text" value={input} onChange={e => setInput(e.target.value)}/>    
       <button type="button" onClick={handleAdd}>Adicionar</button>
 
