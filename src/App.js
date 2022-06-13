@@ -28,19 +28,6 @@ function App() {
 
 
   async function buscaPost(){
-    //  await firebase.firestore().collection('posts')
-    //  .doc('123')
-    //  .get()
-    //  .then((snapshot)=>{
-
-    //   setTitulo(snapshot.data().titulo);
-    //   setAutor(snapshot.data().autor);
-
-    //  })
-    //  .catch(()=>{
-    //    console.log('DEU ALGUM ERRO')
-    //  })
-
     await firebase.firestore().collection('posts')
     .get()
     .then((snapshot)=>{
