@@ -1,8 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *{
-  padding:0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -14,9 +15,9 @@ html, body, #root{
   height: 100%;
 }
 
-body {
+body{
   font: 14px 'Roboto', sans-serif;
-  background-color: #EFEFED;
+  background-color: #EFEFEF;
 }
 
 a{
@@ -28,5 +29,5 @@ ul{
 }
 
 button{
-  cursor: pointer;
+ cursor: pointer; 
 }
