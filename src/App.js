@@ -1,18 +1,11 @@
-import { useState } from 'react';
-import Alunos from './components/Alunos';
-
-import UserProvider from './contexts/user';
+import firebase from './services/firebaseConnection'
 
 function App() {
 
   return (
-   <UserProvider>
       <div>
-        <h1>ESCOLA</h1>
-        <hr/>
-        <Alunos/>
+        <h1>Olá Mundo!!!</h1>
       </div>
-    </UserProvider> 
   );
 }
 
