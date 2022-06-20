@@ -6,6 +6,7 @@ import firebase from '../../services/firebaseConnection';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import { AuthContext } from '../../contexts/auth';
+import { toast } from 'react-toastify';
 
 import './new.css';
 import { FiPlusCircle } from 'react-icons/fi'
@@ -61,10 +62,30 @@ export default function New(){
   }, []);
 
 
-  function handleRegister(e){
+  async function handleRegister(e){
     e.preventDefault();
 
-    alert('TESTE')
+    await firebase.firestore().collection('chamados')
+    .add({
+      created: new Date(),
+      cliente: customers[customerSelected].nomeFantasia,
+      clienteId: customers[customerSelected].id,
+      assunto: assunto,
+      status: status,
+      complemento: complemento,
+      userId: user.uid
+    })
+    .then(()=> {
+      toast.success('Chamado criado com sucesso!');
+      setComplemento('');
+      setCustomerSelected(0);
+    })
+    .catch((err)=> {
+      toast.error('Ops erro ao registrar, tente mais tarde.')
+      console.log(err);
+    })
+
+
   }
 
 
